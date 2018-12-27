@@ -1,0 +1,14 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.rhl</groupId>
+  <artifactId>pinch-common</artifactId>
+  <version>1.0.0</version>
+  <name>pinch-common</name>
+  
+   <parent>
+    <groupId>com.rhl</groupId>
+    <artifactId>Pinch</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../Pinch/pom.xml</relativePath>
+  </parent>
+</project>

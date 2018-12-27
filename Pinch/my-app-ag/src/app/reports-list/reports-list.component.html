@@ -1,0 +1,37 @@
+<!--<div class="row mt-4 ">
+<ul  class="list-inline" >
+    <li class="text-white list-inline-item" *ngFor="let report of reports" (click)="onSelect(report)">
+	 {{report.name}}
+  </li>
+</ul>
+</div> -->
+
+
+<div class="row mt-4">
+  <a *ngFor="let report of reports" class="col-3"
+      routerLink="/reports/{{report}}">
+    <div class="report">
+      <h4>{{report}}</h4>
+    </div>
+  </a>
+</div>
+
+<div class="row mt-4">
+<div class="col-3"  *ngFor="let report of reports" (click)="onSelect(report)">
+<div class="card bg-success text-white">
+   <div class="card-body">
+   <a style="color: #eee" routerLink="/reports/{{report}}">{{report}}</a></div>
+  </div>
+ </div> 
+</div>
+
+<!--<div class="row mt-4">
+<div class="col-4"  *ngFor="let report of reports" (click)="onSelect(report)">
+<div class="card bg-success text-white">
+    <div class="card-body">{{report.name}}</div>
+  </div>
+ </div> 
+</div> -->
+
+
+	

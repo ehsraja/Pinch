@@ -1,0 +1,9 @@
+<ag-grid-angular 
+     #agGrid
+    style="width: 700px; height: 500px;" 
+    class="ag-theme-balham mt-4"
+    [rowData]="rowData" 
+    [columnDefs]="columnDefs"
+	(gridReady)="onGridReady($event)"
+    >
+</ag-grid-angular>

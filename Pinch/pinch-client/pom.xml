@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.rhl</groupId>
+  <artifactId>pinch-client</artifactId>
+  <version>1.0.0</version>
+  <name>pinch-client</name>
+  
+   <parent>
+	    <groupId>com.rhl</groupId>
+	    <artifactId>Pinch</artifactId>
+	    <version>1.0.0</version>
+	    <relativePath>../Pinch/pom.xml</relativePath>
+    </parent>
+  
+  <dependencies>
+    <dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.5.3</version>
+</dependency>
+
+<dependency>
+   <groupId>javax.websocket</groupId>
+   <artifactId>javax.websocket-client-api</artifactId>
+   <version>1.1</version>
+</dependency>
+
+ <!-- <dependency>
+        <groupId>org.glassfish.tyrus</groupId>
+        <artifactId>tyrus-container-jdk-client</artifactId>
+        <version>1.8.3</version>
+  </dependency> -->
+  
+   <dependency>
+        <groupId>org.glassfish.tyrus</groupId>
+        <artifactId>tyrus-container-grizzly-client</artifactId>
+        <version>1.8.3</version>
+  </dependency>
+
+	<dependency>
+		<groupId>org.json</groupId>
+		<artifactId>json</artifactId>
+		<version>20180130</version>
+	</dependency>
+	
+	<!-- Gson: Java to Json conversion -->
+	<dependency>
+		<groupId>com.google.code.gson</groupId>
+		<artifactId>gson</artifactId>
+		<version>2.8.2</version>
+		<scope>compile</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-core</artifactId>
+		<version>2.9.5</version>
+	</dependency>
+
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.9.5</version>
+	</dependency>
+	
+	<dependency>
+    <groupId>com.fasterxml.jackson.datatype</groupId>
+    <artifactId>jackson-datatype-jsr310</artifactId>
+    <version>2.9.5</version>
+</dependency>
+
+	<dependency>
+		<groupId>com.rhl</groupId>
+		<artifactId>pinch-common</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.google.inject</groupId>
+		<artifactId>guice</artifactId>
+		<version>3.0</version>
+   </dependency>
+ 
+  </dependencies>
+  
+  
+</project>
