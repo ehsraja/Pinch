@@ -1,23 +1,26 @@
 package com.rhl.demo;
 
 import java.lang.management.ManagementFactory;
-import java.lang.management.OperatingSystemMXBean;
+//import java.lang.management.ManagementFactory;
+//import java.lang.management.OperatingSystemMXBean;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+
+import com.sun.management.OperatingSystemMXBean;
 
 public class cpu {
 	
 	public static void main(String[] args) throws InterruptedException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		int mb = 1024*1024;
 		
-	/*	OperatingSystemMXBean bean = (com.sun.management.OperatingSystemMXBean) ManagementFactory
-	            .getOperatingSystemMXBean();*/
+		OperatingSystemMXBean operatingSystemMXBean = (com.sun.management.OperatingSystemMXBean) ManagementFactory
+	            .getOperatingSystemMXBean();
 		
-		  OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
+	//	  OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
 	//	  operatingSystemMXBean.g
 		  
-	/*	  for (Method method : operatingSystemMXBean.getClass().getDeclaredMethods()) {
+		  for (Method method : operatingSystemMXBean.getClass().getDeclaredMethods()) {
 		    method.setAccessible(true);
 		    if (method.getName().startsWith("get")
 		        && Modifier.isPublic(method.getModifiers())) {

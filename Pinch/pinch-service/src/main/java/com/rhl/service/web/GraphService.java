@@ -27,13 +27,13 @@ public class GraphService {
 	@RequestMapping("/memoryGraph/{serviceName}")
 	public List<MemoryStat> getMomoreyState(@PathVariable String serviceName) {	
 		System.out.println("In service :" +serviceName );
-		return monitoringService.getmemoryStat("ABC");
+		return monitoringService.getmemoryStat(serviceName);
 	}
 	
 	@RequestMapping("/CPUGraph/{serviceName}")
 	public List<CPUStat> getCPUState(@PathVariable String serviceName) {	
 		System.out.println("In service :" +serviceName );
-		return monitoringService.getCPUStat("ABC");
+		return monitoringService.getCPUStat(serviceName);
 	}
 	
 	@RequestMapping("/apps")

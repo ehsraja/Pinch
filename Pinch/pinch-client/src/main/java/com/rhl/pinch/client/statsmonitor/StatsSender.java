@@ -16,23 +16,31 @@ import com.rhl.pinch.client.WebsocketClientEndpoint;
 
 @Resource
 public class StatsSender implements Runnable {
+	
+
+	public String serviceName ;
+	ObjectMapper objectMapper ;
+	private StatsCapture satatCapture ;
+	
+
 	 
 	private  WebsocketClientEndpoint clientEndPoint ;
-	 ObjectMapper objectMapper = new ObjectMapper();
-
-	StatsCapture satatCapture = new StatsCapture();
+	
 	 
-	public StatsSender() {
-		 try {
-			 this.objectMapper = new ObjectMapper();
-				objectMapper.registerModules(new JavaTimeModule());
-				 objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-		
-				clientEndPoint = new WebsocketClientEndpoint(new URI("ws://localhost:8080/name"));
-			} catch (URISyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	public StatsSender(String serviceName) {
+		super();
+		try {
+
+			this.serviceName = serviceName;
+			this.objectMapper = new ObjectMapper();
+			objectMapper.registerModules(new JavaTimeModule());
+			objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+			satatCapture = new StatsCapture(serviceName);
+			clientEndPoint = new WebsocketClientEndpoint(new URI("ws://localhost:8080/name"));
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -45,7 +53,11 @@ public class StatsSender implements Runnable {
 		try {		
 			System.out.println("Sending messege");
 		    AppStats appStat = satatCapture.capture();
-	        String jsonStat = null ;  
+	        if(appStat.getSystemCpuUsage() < 0  || appStat.getProcesCpuUsage() < 0  ) {
+	        	System.out.println("Returning as invalide values ");
+	        	return ;
+	        }
+		    String jsonStat = null ;  
 		
 		    jsonStat = objectMapper.writeValueAsString(appStat);			   	
 	        System.out.println("Sending messege " + jsonStat);
@@ -57,6 +69,7 @@ public class StatsSender implements Runnable {
 		}
 		catch (Exception e) {
 			System.err.println("Exception: " + e);
+			e.printStackTrace();
 		}	
 	}
 }

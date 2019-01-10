@@ -1,13 +1,14 @@
 package com.rhl.demo;
 
-import com.rhl.pinch.client.statsmonitor.StateSchdular;
+import com.rhl.pinch.client.statsmonitor.StateMonitor;
 
 public class Main {
 	
 	
 	public static void main(String k []) throws InterruptedException {
 		
-		StateSchdular stateScheudar = new StateSchdular();
+		
+		StateMonitor stateScheudar = new StateMonitor("ABC3");
 		stateScheudar.start();
 		Demo demo = new Demo();
 		for (int i=0; i<100; i++) {
