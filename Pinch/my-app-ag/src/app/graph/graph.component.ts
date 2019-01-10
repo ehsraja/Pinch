@@ -1,5 +1,6 @@
 import { Component, OnInit ,ViewEncapsulation,ViewChild ,ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 //import {ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, ViewChild,OnInit,ViewEncapsulation} from '@angular/core';
 
 import * as d3 from 'd3';
@@ -22,7 +23,7 @@ export class GraphComponent implements OnInit { //,OnChanges {
 	 
         data:any = [];
         cpuData:any = [];
-	 
+	      appName: "";
 	  /* data = [{
             "creat_time": "2013-03-12 15:09:04",
             "record_status": "ok",
@@ -46,16 +47,20 @@ export class GraphComponent implements OnInit { //,OnChanges {
     }]; */
    parseDate = d3.timeParse('%Y-%m-%d %H:%M:%S');
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
-	    this.http.get('http://localhost:8080/graph/memoryGraph/ABC').
+     this.activeRoute.params.subscribe(routeParams => {
+		this.appName = routeParams.name ;
+		console.log("param name : " + this.appName);
+		});
+	    this.http.get('http://localhost:8080/graph/memoryGraph/' + this.appName).
 		 subscribe(dat => { console.log(dat); 
                          this.data =  dat ;
                         this.buildChart();
                });
 
-      this.http.get('http://localhost:8080/graph/CPUGraph/ABC').
+      this.http.get('http://localhost:8080/graph/CPUGraph/'+this.appName).
 		 subscribe(dat => { console.log(dat); 
                          this.cpuData =  dat ;
                       this.buildChart2(); });                 
