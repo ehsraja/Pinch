@@ -2,11 +2,7 @@ package com.rhl.pinch.client.statsmonitor;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import javax.annotation.Resource;
-import javax.inject.Inject;
-
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -53,7 +49,7 @@ public class StatsSender implements Runnable {
 		try {		
 			System.out.println("Sending messege");
 		    AppStats appStat = satatCapture.capture();
-	        if(appStat.getSystemCpuUsage() < 0  || appStat.getProcesCpuUsage() < 0  ) {
+	        if(appStat.getSystemCpuUsage() < 0  || appStat.getProcesCpuUsage() < 0  || appStat.getProcesCpuUsage() > appStat.getSystemCpuUsage()  ) {
 	        	System.out.println("Returning as invalide values ");
 	        	return ;
 	        }
