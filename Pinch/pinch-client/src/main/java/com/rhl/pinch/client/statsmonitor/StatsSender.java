@@ -14,7 +14,8 @@ import com.rhl.pinch.client.WebsocketClientEndpoint;
 public class StatsSender implements Runnable {
 	
 
-	public String serviceName ;
+	private  String serviceName ;
+	private  String address ;
 	ObjectMapper objectMapper ;
 	private StatsCapture satatCapture ;
 	
@@ -23,16 +24,17 @@ public class StatsSender implements Runnable {
 	private  WebsocketClientEndpoint clientEndPoint ;
 	
 	 
-	public StatsSender(String serviceName) {
-		super();
+	public StatsSender(String serviceName,String address) {
 		try {
-
 			this.serviceName = serviceName;
+			this.address = address ;
 			this.objectMapper = new ObjectMapper();
 			objectMapper.registerModules(new JavaTimeModule());
 			objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 			satatCapture = new StatsCapture(serviceName);
-			clientEndPoint = new WebsocketClientEndpoint(new URI("ws://localhost:8080/name"));
+			String URL = "ws://"+ address+ ":8080/name" ;
+			clientEndPoint = new WebsocketClientEndpoint(new URI(URL));
+		//	clientEndPoint = new WebsocketClientEndpoint(new URI("ws://localhost:8080/name"));
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
