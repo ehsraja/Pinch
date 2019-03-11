@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String k []) throws InterruptedException {
 		
 		
-		StateMonitor stateScheudar = new StateMonitor("ABC3");
+		StateMonitor stateScheudar = new StateMonitor("ABC2");
 		stateScheudar.start();
 		Demo demo = new Demo();
 		for (int i=0; i<100; i++) {

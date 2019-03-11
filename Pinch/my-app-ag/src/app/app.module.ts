@@ -8,7 +8,8 @@ import {routing} from "./app.routing";
 import { ReportsViewComponent } from './reports-view/reports-view.component';
 import { GraphComponent } from './graph/graph.component';
 import { AppsComponent } from './apps/apps.component';
-import { MomoryComponent } from './momory/momory.component';
+import { StatsComponent } from './stats/stats.component';
+import { StatsGraphComponent } from './stats/statsGraph/statsGraph.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MomoryComponent } from './momory/momory.component';
     ReportsViewComponent,
     GraphComponent,
     AppsComponent,
-    MomoryComponent
+    StatsComponent,
+    StatsGraphComponent
   ],
   imports: [
     BrowserModule,HttpClientModule,AgGridModule.withComponents([]), routing

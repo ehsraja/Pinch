@@ -16,7 +16,7 @@ public class PinchMain {
 	
 		ApplicationContext applicationContext =  SpringApplication.run(PinchMain.class, args);
 		for (String name : applicationContext.getBeanDefinitionNames()) {
-			System.out.println(name);
+		//	System.out.println(name);
 		}
 	}
 

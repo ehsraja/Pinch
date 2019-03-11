@@ -6,27 +6,44 @@ import * as scale from 'd3-scale';
 
 
 @Component({
-  selector: 'app-momory',
-  templateUrl: './momory.component.html',
-  styleUrls: ['./momory.component.scss']
+  selector: 'app-stats',
+  templateUrl: './stats.component.html',
+  styleUrls: ['./stats.component.scss']
 })
-export class MomoryComponent implements OnInit   {
+export class StatsComponent implements OnInit   {
 
   
 	
 	// data:any = [];
-    @ViewChildren('divs') 
-    divs: QueryList<ElementRef> ;
-
-    apps:any = [];
+ //   @ViewChildren('divs') 
+  //  divs: QueryList<ElementRef> ;
+    apps:any = [] ;
+    applications:any = [];
 	//  @ViewChildren('appchart') apcharts: QueryList<ElementRef>
  
   //    parseDate = d3.timeParse('%Y-%m-%d %H:%M:%S'); 
 
-  constructor(private getAllAppsService: GetAllAppsService, private http: HttpClient ) { }
+  constructor(private getAllAppsService: GetAllAppsService, private http: HttpClient ) { 
+    console.log("1");
+     this.getApps();
+     console.log("2");
+      console.log(" Hi momery" + this.applications);
+  }
+
+  set Apps(applications: any[]){
+    console.log("6"+ applications);
+    this.apps = applications ;
+  }
+
 
   ngOnInit() {
-	  this.apps =  this.getApps();
+     
+      this.getApps();
+
+     console.log("3 log::" + this.applications)
+   
+     
+	//  this.applications =  this.getApps();
 	//  console.log("sds" + this.divs.length);
 	  
 	/*  this.apps.forEach(app => {
@@ -44,14 +61,21 @@ export class MomoryComponent implements OnInit   {
 
 
   
- getApps() {
-    this.apps = [];
-    this.getAllAppsService.getApps().subscribe((data: {}) => {
-      console.log(" Hi " + data);
-      this.apps = data;
-      console.log("sds" + this.divs.length);
-     
-    });
+   async getApps() {
+  /*  this.applications = [];
+    this.getAllAppsService.getApps().subscribe(async data => {
+     this.applications=data;
+     console.log(" Hi momery" + data);
+ });*/
+   
+     await this.getAllAppsService.getApps().then(respons => 
+      { console.log("chach1" + respons.toLocaleString) ;
+        console.log("chach2" +  respons[0]); 
+        this.applications = respons ;
+        this.Apps = respons ;
+       console.log("log::" + this.applications)
+      });
+    
   } 
 
 

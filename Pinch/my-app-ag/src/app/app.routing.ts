@@ -3,11 +3,11 @@ import { ReportsListComponent } from './reports-list/reports-list.component';
 import { ReportsViewComponent } from './reports-view/reports-view.component';
 import { GraphComponent } from './graph/graph.component';
 import { AppsComponent } from './apps/apps.component';
-import { MomoryComponent } from './momory/momory.component';
+import { StatsComponent } from './stats/stats.component';
 
 const routes: Routes = [
   { 
-     path: 'reports', 
+     path: 'curves', 
      component: ReportsListComponent 
    },
    {
@@ -23,8 +23,8 @@ const routes: Routes = [
      component: GraphComponent 
    },
      { 
-     path: 'memory', 
-     component: MomoryComponent 
+     path: 'appStats', 
+     component: StatsComponent 
    }
 ];
 
